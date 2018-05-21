@@ -29,7 +29,7 @@ else
 fi
 
 # bash
-echo "Setting up bash...\n"
+# echo "Setting up bash...\n"
 
 # vim
 echo "Setting up vim...\n"
@@ -41,5 +41,5 @@ echo "Setting up tmux...\n"
 lnif $dotfiles/.tmux.conf ~/.tmux.conf
 
 # zsh
-echo "Setting up zsh...\n"
+# echo "Setting up zsh...\n"
 
