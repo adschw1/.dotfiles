@@ -11,6 +11,11 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
+" Colorscheme
+set background=dark
+" colorscheme peaksea
+colorscheme solarized
+
 "Set Number
 set relativenumber
 set number
@@ -155,10 +160,6 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
-
-" Colorscheme
-set background=dark
-colorscheme peaksea
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
