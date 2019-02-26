@@ -1,0 +1,159 @@
+{
+  "_from": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+  "_id": "linter-flake8@2.4.0",
+  "_inBundle": false,
+  "_integrity": "sha512-ZkVVBhwsoPSD5H9SAPVTRolLR1Gf8u5Qobq7O4VjRti8ypHmoWYStE9H4rtc2F+hqOpQyeOa/ysCrqtXOT+H8Q==",
+  "_location": "/linter-flake8",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+  "_shasum": "ceb0aafc6f523ab5eefdc659e12929c08792b992",
+  "_spec": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119125-98218-d47qff.4ys8j",
+  "activationHooks": [
+    "language-python:grammar-used",
+    "MagicPython:grammar-used",
+    "django-atom:grammar-used",
+    "atom-django:grammar-used"
+  ],
+  "bugs": {
+    "url": "https://github.com/AtomLinter/linter-flake8/issues"
+  },
+  "bundleDependencies": false,
+  "configSchema": {
+    "executablePath": {
+      "type": "string",
+      "default": "flake8",
+      "description": "Semicolon separated list of paths to a binary (e.g. /usr/local/bin/flake8). Use `$PROJECT` or `$PROJECT_NAME` substitutions for project specific paths e.g. `$PROJECT/.venv/bin/flake8;/usr/bin/flake8`"
+    },
+    "projectConfigFile": {
+      "type": "array",
+      "default": [
+        "tox.ini",
+        ".flake8",
+        "setup.cfg"
+      ],
+      "description": "flake config file relative path from project (e.g. tox.ini or .flake8rc)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "maxLineLength": {
+      "type": "integer",
+      "default": 79
+    },
+    "ignoreErrorCodes": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "maxComplexity": {
+      "description": "McCabe complexity threshold (`-1` to disable)",
+      "type": "integer",
+      "default": -1
+    },
+    "hangClosing": {
+      "type": "boolean",
+      "default": false
+    },
+    "selectErrors": {
+      "description": "input \"E, W\" to include all errors/warnings",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "pycodestyleErrorsToWarnings": {
+      "description": "Convert pycodestyle \"E\" messages to linter warnings",
+      "type": "boolean",
+      "default": false
+    },
+    "flakeErrors": {
+      "description": "Convert Flake \"F\" messages to linter errors",
+      "type": "boolean",
+      "default": false
+    },
+    "builtins": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "description": "Define additional built in variables, in a comma separated list."
+    }
+  },
+  "dependencies": {
+    "atom-linter": "^10.0.0",
+    "atom-package-deps": "^5.0.0",
+    "fs-plus": "^3.0.0",
+    "semver": "^5.4.1"
+  },
+  "deprecated": false,
+  "description": "Atom linter plugin for Python, using flake8",
+  "devDependencies": {
+    "eslint": "^4.6.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "jasmine-fix": "^1.0.1"
+  },
+  "engines": {
+    "atom": ">=1.9.0 <2.0.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "rules": {
+      "global-require": "off",
+      "import/no-unresolved": [
+        "error",
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ]
+    },
+    "globals": {
+      "atom": true
+    },
+    "env": {
+      "node": true,
+      "browser": true
+    }
+  },
+  "homepage": "https://github.com/AtomLinter/linter-flake8#readme",
+  "license": "MIT",
+  "main": "./lib/main.js",
+  "name": "linter-flake8",
+  "package-deps": [
+    "linter:2.0.0"
+  ],
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtomLinter/linter-flake8.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "apm test"
+  },
+  "version": "2.4.0"
+}

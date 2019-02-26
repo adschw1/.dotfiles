@@ -1,0 +1,30 @@
+@import "variables";
+
+kite-logo {
+  display: inline-block;
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &.badge {
+    background: fadeout(@text-color-subtle, 40%);
+
+    // All the units are expressed in pixels, since ems or rems would cause
+    // fat logo at times
+    font-size: 8px;
+    line-height: 14px;
+    padding: 0 3px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    margin: -2px;
+    margin-left: 10px;
+
+    svg polygon {
+      fill: @app-background-color;
+    }
+  }
+}

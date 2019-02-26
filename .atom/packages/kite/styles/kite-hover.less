@@ -1,0 +1,97 @@
+@import "ui-variables";
+@import "variables";
+
+kite-hover {
+  display: flex;
+  flex-direction: column;
+  background: @app-background-color;
+  color: @text-color-highlight;
+  padding: @half-padding @component-padding;
+  padding-bottom: @component-padding;
+  border-radius: @component-border-radius;
+  font-family: @font-family;
+  max-width: 20em;
+  overflow: hidden;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
+
+  animation: fade-in 100ms;
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translate(0, -3px); }
+    100% { opacity: 1; transform: translate(0, 0); }
+  }
+
+  code {
+    font-family: var(--editor-font-family);
+    font-size: var(--editor-font-size);
+    line-height: var(--editor-line-height);
+
+    padding: 0;
+    background: inherit;
+  }
+
+  .debug {
+    margin-top: @half-padding;
+
+    pre {
+      cursor: text;
+      -webkit-user-select: all;
+      user-select: all;
+      max-height: 300px;
+      max-width: 500px;
+      overflow: auto;
+
+      > * {
+        pointer-events: none;
+      }
+    }
+  }
+
+  .auto-cursor;
+
+  .definition {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: normal;
+
+    .name {
+      word-break: break-word;
+    }
+    .type { // TODO: Opportunity to unify CSS: This is very similar as elsewhere, with the exception of font size and different margins
+      font-size: .8em;
+      display: inline-block;
+      flex: none;
+      padding: .3em .5em;
+      line-height: 1;
+      border: 1px solid @text-color-subtle;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+      margin-right: -.2em;
+      margin-left: 3em !important;
+    }
+
+
+    .type, .signature, a, a:hover, a:focus, a:active {
+      color: @text-color;
+      pointer-events: none;
+    }
+
+    > * {
+      flex: 1 1 0;
+      &:empty {
+        display: none;
+      }
+
+      &:not(:first-child) {
+        text-align: right;
+        margin-left: @component-padding;
+      }
+    }
+  }
+
+  kite-links {
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+}

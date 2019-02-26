@@ -1,0 +1,285 @@
+@import "variables";
+@import "content";
+
+@rate: 1;
+
+kite-search {
+  .kite-code;
+
+  display: flex;
+  flex-direction: column;
+  background: @tab-background-color;
+  position: absolute;
+  z-index: 100;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: @half-padding 0 0;
+  padding-left: @component-padding;
+
+  &[position="hidden"] {
+    display: none;
+  }
+
+  &[position="top-right"] {
+    top: 10%;
+    right: 1px;
+
+    .collapser {
+      left: 0;
+    }
+  }
+
+  &[position="bottom-right"] {
+    bottom: 10%;
+    right: 1px;
+
+    .collapser {
+      left: 0;
+    }
+  }
+
+  &.collapsed {
+    width: 3.2em;
+    height: 3.2em;
+
+    kite-expand, > header, .select-list, .collapser, .history {
+      display: none;
+    }
+  }
+
+  .expand-header,
+  .scroll-wrapper .sections-wrapper {
+    padding: 0 @sidebar-horizontal-padding;
+    padding-top: @component-padding;
+  }
+
+  h4 .sticky.fixed {
+    background: @hover-background-color;
+
+    &:hover {
+      background: mix(@hover-background-color, @text-color-info, 90%);
+    }
+  }
+
+  &:not(.collapsed) {
+    width: 400px;
+    height: 80%;
+
+    .expander {
+      display: none;
+    }
+  }
+
+  atom-text-editor[mini] {
+    background: @input-background-color;
+    border-radius: 0;
+    border: none;
+    font-size: var(--editor-font-size);
+
+    &.is-focused {
+      background: transparent;
+      border-radius: 0;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      box-shadow: none;
+    }
+  }
+
+  .expander {
+    padding: 0.4em;
+    cursor: pointer;
+    position: absolute;
+    right: @half-padding;
+    top: @half-padding;
+  }
+
+  .collapser {
+    background: @border-color;
+    color: @base-background-color;
+    position: absolute;
+    width: @component-padding;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+    z-index: 20;
+
+    &:hover {
+      background: @border-color-hover;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      margin-top: -0.5em;
+      left: 50%;
+      margin-left: -3px;
+    }
+  }
+
+  kite-expand {
+    flex: 1 1 auto;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+
+    kite-navigable-stack-breadcrumb {
+      position: static;
+      margin-top: @component-padding;
+    }
+
+    footer { // TODO: Opportunity to unify CSS: This is the same as in kite-sidebar.less
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex: 0 0 auto;
+      z-index: 1000;
+      height: 4em;
+      line-height: 4em;
+      color: @text-color-subtle;
+      padding: 0 @sidebar-horizontal-padding;
+      border-top: 1px solid @sidebar-header-background;
+      border-bottom: 1px solid @sidebar-header-background; // To separate from the editor status line
+
+      .actions {
+        a {
+          color: @text-color-subtle;
+          text-decoration-line: none;
+
+          &:hover {
+            text-decoration-line: none;
+          }
+          span {
+            text-decoration: underline;
+          }
+        }
+        a + a:before {
+          content: ' · ';
+          padding: 0 0.2em;
+          color: @text-color-subtle;
+        }
+
+        > * {
+          display: none;
+        }
+      }
+      kite-logo.badge {
+        margin-top: 2em;
+      }
+    }
+  }
+
+  .has-scroll .actions > * {
+    display: inline-block;
+  }
+
+  h4 { // TODO: Opportunity to unify CSS: This is the same as in content.less
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: normal;
+    color: @text-color-subtle;
+  }
+
+  > header {
+    padding: 0 @sidebar-horizontal-padding;
+    padding-bottom: @component-padding;
+  }
+
+  .btn-close {// TODO: Opportunity to unify CSS: This is very similar as in kite-error-rescue-sidebar.js
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0.5em;
+    margin: calc(-2px - 0.5em);
+    position: absolute;
+    right: @component-padding;
+    top: @component-padding;
+    color: @text-color-subtle;
+
+    .icon::before {
+      margin-right: 0;
+    }
+
+    &:hover {
+      color: @text-color-highlight;
+    }
+  }
+
+  .history {
+    padding: 0 @sidebar-horizontal-padding;
+    padding-top: @component-padding;
+
+
+    .select-list.popover-list {
+      border: none;
+      margin-left: 0;
+    }
+
+    .select-list.popover-list ol.list-group li {
+      padding-left: 0;
+    }
+  }
+
+  .select-list.popover-list {
+    width: auto;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 @half-sidebar-left-indent;
+    border: 1px solid @button-background-color;
+    border-radius: @component-border-radius;
+
+    atom-text-editor[mini] {
+      padding-left: @half-sidebar-left-indent;
+      padding-right: @half-sidebar-left-indent;
+
+      margin-bottom: 0;
+
+      background: @input-background-color;
+      border-radius: @component-border-radius;
+    }
+
+    &.has-results {
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      margin-bottom: @component-padding;
+      z-index: 10;
+    }
+
+    ol.list-group {
+      max-height: 130px;
+      margin-top: 0;
+      padding: 0;
+      background: blue;
+      background: @app-background-color;
+
+      p {
+        margin: 1em 0;
+        padding-left: @sidebar-left-indent;
+        padding-right: @component-padding;
+      }
+
+      li {
+        font-size: 1.2em;
+        padding-left: @half-sidebar-left-indent;
+        padding-right: @component-padding;
+        cursor: pointer;
+
+        &.selected {
+          background: @background-color-highlight;
+        }
+
+        small {
+          opacity: 0.75;
+          margin-left: 0.5em;
+          text-transform: uppercase;
+          float: right;
+          font-size: 0.6em;
+        }
+      }
+    }
+  }
+}

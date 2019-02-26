@@ -1,0 +1,22 @@
+@import "ui-variables";
+
+kite-open-link {
+  display: inline-block;
+
+  a[href] {
+    margin: -10px;
+    padding: 10px;
+    line-height: 4em;
+  }
+  a[href] span {
+    color: @text-color-subtle;
+  }
+
+  &:hover {
+    color: @text-color-highlight;
+  }
+
+  kbd {
+    display: none;
+  }
+}

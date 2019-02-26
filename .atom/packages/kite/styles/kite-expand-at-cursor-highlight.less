@@ -1,0 +1,38 @@
+@import "ui-variables";
+
+.expand-at-cursor-highlight {
+  pointer-events: none;
+
+  &.region {
+    border-radius: 3px;
+
+    background-color: fadeout(@syntax-selection-color, 50%);
+    background-image: linear-gradient(-0.2turn,
+        transparent 20%, @syntax-selection-color 50%, transparent 80%);
+    background-size: 2em 2em;
+    background-position: -2em 0;
+    background-repeat: no-repeat;
+
+    box-sizing: content-box !important; // Allows to add margin and padding to width
+    margin-left: -5px;
+    padding-right: 10px;
+
+    animation: expand-at-cursor-highlight-disappearing 600ms ease-out;
+    animation-fill-mode: both;
+
+    @keyframes expand-at-cursor-highlight-disappearing {
+      50%, 100% {
+        background-position-x: calc(~"100% + 2em"); // Syntax to allow CSS to do the calculation, not LESS
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+
+  &.error.region {
+    background-color: fadeout(@background-color-error, 66%);
+    background-image: linear-gradient(-0.2turn,
+        transparent 20%, fadeout(@background-color-error, 33%) 50%, transparent 80%);
+  }
+}

@@ -1,0 +1,26 @@
+.kite-code {
+  pre,
+  code {
+    // In case of a user selecting a combination of:
+    // dark UI theme/light syntax theme OR light UI theme/dark syntax theme
+    // using the default syntax colors often makes them unreadable since we
+    // have to output them on the UI background, not the syntax background.
+    // In this case, we synthesize new syntax colors.
+    .synthesized-syntax-color(@syntax-text-color, @tab-background-color);
+  }
+}
+
+.synthesized-syntax-color(@text-color, @background-color)
+    when (((lightness(@text-color) < 50%) and (lightness(@background-color) < 50%)) or
+          ((lightness(@text-color) > 50%) and (lightness(@background-color) > 50%))) {
+  span {
+    color: hsl(hue(@syntax-text-color), saturation(@syntax-text-color),
+           100% - lightness(@background-color)) !important;
+  }
+  .syntax--punctuation, .syntax--punctuation > span,
+  .syntax--constant, .syntax--constant > span,
+  .syntax--keyword, .syntax--keyword > span {
+    color: hsl(hue(@syntax-color-keyword), saturation(@syntax-color-keyword),
+           (150% - lightness(@background-color)) / 2) !important;
+  }
+}

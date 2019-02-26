@@ -1,0 +1,10 @@
+menu: [
+  label: 'Packages'
+  submenu: [
+    label: 'Kite'
+    submenu: [
+      {label: 'Package Settings', command: 'kite:package-settings'},
+      {label: 'Engine Settings', command: 'kite:engine-settings'}
+    ]
+  ]
+]

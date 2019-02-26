@@ -1,0 +1,330 @@
+@import 'variables';
+
+.tab[data-type="kite-error-rescue-sidebar"] .icon-info::before {
+  color: @text-color-info;
+}
+
+kite-error-rescue-sidebar {
+  .header {
+    background: @sidebar-header-background;
+    padding: @double-padding @sidebar-horizontal-padding @double-padding;
+    margin: 0 -@sidebar-horizontal-padding;
+
+  }
+
+  .kite-column:not(.error-rescue-enabled) .content {
+    display: none;
+  }
+
+  .settings-view {
+    position: relative;
+
+    .settings-panel {
+      width: 100%;
+    }
+
+    .setting-title, .form-control {
+      font-size: 1em;
+    }
+
+    .control-group.checkbox {
+      padding-left: 40px + @sidebar-left-indent;
+      margin-bottom: .5em;
+
+    }
+    .control-group.checkbox:not(.checked) + .control-group.select {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    input.input-toggle {
+      margin-left: -40px;
+    }
+
+    .control-group.select {
+      padding-left: @sidebar-left-indent;
+
+      label {
+        flex-direction: row;
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+
+        .setting-title {
+          white-space: nowrap;
+          margin-right: @half-padding;
+        }
+
+        .form-control {
+          width: auto;
+          flex: 1 1 0;
+        }
+      }
+    }
+  }
+  .content:not(:empty) {
+    padding-top: @component-padding;
+  }
+  code {
+    font-family: var(--editor-font-family);
+    font-size: var(--editor-font-size);
+    line-height: var(--editor-line-height);
+
+    // TODO: Opportunity to unify CSS: All of this is also present in content.less in .kite-code.
+  }
+  h4 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: normal;
+    color: @text-color-subtle;
+    // TODO: Opportunity to unify CSS: All of this above is duplicated verbatim from content.less.
+    margin-left: -@sidebar-left-indent;
+  }
+  .diff {
+    margin: @component-padding 0;
+    margin-bottom: @double-padding;
+    margin-left: @sidebar-left-indent;
+
+    kite-links a, kite-links a:hover, kite-links a:focus, kite-links a:active {
+      font-size: 1em;
+    }
+    .feedback-actions a {
+      white-space: nowrap;
+    }
+    .icon.icon-file-code::before {
+      margin-right: 0; // Optical adjustment
+    }
+
+    &:not(:first-child) {
+      .feedback-actions {
+        display: none;
+        pointer-events: none;
+      }
+    }
+  }
+  .message, .timestamp {
+    margin-top: @component-padding;
+  }
+  .diff-content {
+    margin-top: @component-padding;
+    display: block;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .feedback-actions {
+    display: flex;
+    text-align: left;
+    margin-top: @component-padding;
+
+    a {
+      color: @text-color-subtle;
+
+      &:hover {
+        color: @text-color-highlight;
+      }
+      &.clicked {
+        color: @text-color-selected;
+        opacity: 1;
+      }
+    }
+  }
+  .feedback-feedback {
+    display: block;
+    min-height: 2em;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+    border-top: 1px solid transparent;
+    color: transparent;
+    &.hint {
+      color: @text-color-subtle;
+      border-top-color: @subtle-border-color;
+    }
+    &.confirmation {
+      color: @text-color-highlight;
+      border-top-color: @subtle-border-color;
+    }
+  }
+
+  del, ins {
+    display: flex;
+    flex-direction: row;
+    text-decoration-line: none;
+
+    border: 1px solid @subtle-border-color;
+
+    .line-number {
+      width: 80px;
+      opacity: 0.5;
+      padding: 4px @component-padding;
+      color: @text-color;
+      border-right: 1px solid @subtle-border-color;
+    }
+    strong {
+      padding: 0.2em 0.1em;
+      margin: -0.2em -0.1em;
+      font-weight: inherit;
+    }
+    .line {
+      padding: 4px;
+      padding-left: @triple-padding;
+      position: relative;
+      color: @syntax-text-color;
+      white-space: pre-wrap;
+      word-break: break-word;
+
+      // Indent every line except the first one by 4 spaces
+      margin-left: 4ch;
+      text-indent: -4ch;
+
+      &::before {
+        opacity: 0.5;
+        position: absolute;
+        left: 0;
+        padding-left: @component-padding;
+      }
+    }
+  }
+  ins {
+    border-top: 0;
+  }
+  del .line::before {
+    content: '+';
+  }
+  ins .line::before {
+    content: '-';
+  }
+  ins .line-number {
+    text-align: right;
+  }
+  del strong {
+    border: 1px solid fadeout(mix(@syntax-color-removed, @pane-item-background-color, 100%), 70%);
+  }
+  ins strong {
+    border: 1px solid fadeout(mix(@syntax-color-added, @pane-item-background-color, 100%), 70%);
+  }
+
+  .recent del {
+    border: 0;
+    margin: 0;
+    background-color: saturate(mix(@syntax-color-removed, @pane-item-background-color, 15%), 20%);
+    .line-number {
+      background-color: saturate(mix(@syntax-color-removed, @pane-item-background-color, 25%), 20%);
+      border: none;
+    }
+    strong {
+      background-color: saturate(mix(@syntax-color-removed, @pane-item-background-color, 35%), 20%);
+      border: none;
+    }
+  }
+  .recent ins {
+    border: 0;
+    margin: 0;
+    background-color: saturate(mix(@syntax-color-added, @pane-item-background-color, 15%), 20%);
+    .line-number {
+      background-color: saturate(mix(@syntax-color-added, @pane-item-background-color, 25%), 20%);
+      border: none;
+    }
+    strong {
+      background-color: saturate(mix(@syntax-color-added, @pane-item-background-color, 35%), 20%);
+      border: none;
+    }
+  }
+
+  a.icon-question {
+    position: absolute;
+    top: 0.4em;
+    right: 0;
+    z-index: 2;
+    font-size: 1.5em;
+    color: @text-color-subtle;
+    &:hover::before {
+      color: @text-color-info;
+    }
+    &::before {
+      font-size: 1em;
+      width: auto;
+      height: auto;
+      margin: 0;
+    }
+  }
+
+  .messages.has-messages + div .icon-question {
+    display: none;
+  }
+
+  .message-box {
+    margin: 0 0 @double-padding;
+    padding: @double-padding (6 * @component-padding) @double-padding @double-padding;
+    border-radius: @component-border-radius;
+    background: @app-background-color;
+    position: relative;
+
+    h4 {
+      margin-top: 0;
+      margin-left: 0;
+      margin-bottom: @component-padding;
+    }
+
+    .btn-close {
+      -webkit-appearance: none;
+      background: transparent;
+      border: none;
+      padding: 0.5em;
+      margin: calc(4px - 0.5em);
+      position: absolute;
+      right: @component-padding;
+      top: @component-padding;
+      color: @text-color-subtle;
+
+      .icon::before {
+        margin-right: 0;
+      }
+
+      &:hover {
+        color: @text-color-highlight;
+      }
+    }
+
+    p + .diff-content {
+      margin-top: -@component-padding;
+    }
+
+    .diff-content {
+      margin-bottom: @double-padding;
+    }
+
+    a {
+      color: @text-color-info;
+    }
+  }
+
+  .kite-column {
+    display: block !important;
+    overflow-y: auto !important;
+
+    padding: 0 @sidebar-horizontal-padding !important;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    z-index: 1000;
+    height: 4em;
+    line-height: 4em;
+    color: @text-color-subtle;
+    padding: 0 @sidebar-horizontal-padding;
+    border-top: none;
+    border-bottom: none; // To separate from the editor status line
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 -3px 6px @tab-background-color;
+  }
+}

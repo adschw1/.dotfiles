@@ -1,0 +1,145 @@
+@import "variables";
+
+atom-panel.left kite-error-rescue-sidebar,
+atom-panel.left kite-sidebar {
+  .kite-column {
+    padding-right: @half-padding;
+  }
+}
+
+atom-panel.right kite-error-rescue-sidebar,
+atom-panel.right kite-sidebar {
+  .kite-column {
+    padding-left: @half-padding;
+  }
+}
+
+kite-error-rescue-sidebar,
+kite-sidebar {
+  display: flex;
+  font-size: 1em;
+  font-family: @font-family;
+  flex-direction: row;
+
+  background: @tab-background-color;
+
+  h4 .sticky.fixed {
+    background: @app-background-color;
+
+    &:hover {
+      background: mix(@app-background-color, @text-color-info, 90%);
+    }
+  }
+
+  .debug {
+    background: @base-background-color;
+  }
+
+  .btn.icon-x {
+    border: 1px solid transparent;
+    background: transparent;
+    transition: border 0.2s, background 0.2s;
+  }
+
+  .kite-column {
+    display: flex;
+    padding: 0 0;
+    flex-direction: column;
+    order: 1;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .background-message {
+    opacity: 0.5;
+
+    kite-logo {
+      display: block;
+      svg {
+        width: 2em;
+
+        polygon {
+          fill: @text-color;
+        }
+      }
+    }
+  }
+
+  kite-navigable-stack,
+  kite-navigable-stack-breadcrumb {
+    flex: 1 1 0;
+
+    .expand-header,
+    .scroll-wrapper .sections-wrapper {
+      padding: 0 @sidebar-horizontal-padding;
+      padding-top: @component-padding;
+    }
+  }
+
+  kite-navigable-stack {
+    .sections-wrapper section.summary:empty {
+      display: none;
+    }
+  }
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    kite-navigable-stack-breadcrumb {
+      align-items: center;
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    z-index: 1000;
+    height: 4em;
+    line-height: 4em;
+    color: @text-color-subtle;
+    padding: 0 @sidebar-horizontal-padding;
+
+    box-shadow: 0 -3px 6px @tab-background-color;
+
+    .actions {
+      a {
+        color: @text-color-subtle;
+        text-decoration-line: none;
+
+        &:hover {
+          text-decoration-line: none;
+        }
+        span {
+          text-decoration: underline;
+        }
+      }
+      a + a:before {
+        content: ' · ';
+        padding: 0 0.2em;
+        color: @text-color-subtle;
+      }
+
+      > * {
+        display: none;
+      }
+    }
+    kite-logo.badge {
+      margin-top: 2em;
+    }
+  }
+
+  .has-scroll .actions > * {
+    display: inline-block;
+  }
+}
+
+kite-sidebar {
+  footer {
+    border-top: 1px solid @subtle-border-color;
+    border-bottom: 1px solid @subtle-border-color; // To separate from the editor status line
+  }
+}

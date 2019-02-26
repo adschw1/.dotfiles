@@ -1,0 +1,7 @@
+{
+  "filename": "",
+  "requested_buffer_hash": "ab727d592ed792abf5f600baaac1308b",
+  "new_buffer": "for x in list\n    print(x)\n",
+  "version": 1,
+  "diffs": []
+}

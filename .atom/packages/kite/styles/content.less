@@ -1,0 +1,695 @@
+@import "ui-variables";
+@import "variables";
+@import "syntax-highlighting";
+
+.unreachable {
+  &, &:hover, &:active, &:focus {
+    color: @text-color;
+    opacity: 0.6;
+    text-decoration-line: none;
+  }
+
+  * {
+    color: @text-color;
+  }
+}
+
+.kite-section-strike {
+}
+
+.kite-caption {
+  caption, figcaption {
+    padding: 0;
+    color: @text-color-highlight;
+    margin-bottom: @half-padding;
+  }
+}
+
+.kite-table {
+  .kite-caption;
+  table {
+    width: 100%;
+    margin-bottom: @half-padding;
+
+
+    th, td {
+      padding: 0.4em;
+      border: 1px solid @border-color;
+    }
+  }
+}
+
+.kite-code {
+  pre,
+  code {
+    font-family: var(--editor-font-family);
+    font-size: var(--editor-font-size);
+    line-height: var(--editor-line-height);
+
+    background: inherit; // Defaults to no background color
+    padding: 0;
+  }
+}
+
+.kite-icon-list {
+  ul li {
+    position: relative;
+
+    > .icon {
+      position: absolute;
+    }
+
+    > a, > span {
+      padding-left: 1.3em;
+      padding-right: 1.5em;
+
+      .icon {
+        position: absolute;
+        top: 0.2em;
+        right: 0;
+      }
+    }
+  }
+}
+
+.kite-icon-list,
+.kite-list {
+  ul li {
+    position: relative;
+
+    > a, > span {
+      display: block; // 100% width click target
+      padding-bottom: @half-padding;
+      padding-right: 1.5em; // Prevents text from touching the chevron
+
+      text-decoration-line: none;
+
+      .icon { // Chevron
+        position: absolute;
+        top: 0;
+        right: -0.8em; // Right tip aligns with right margin
+        color: @text-color-subtle;
+      }
+
+      &:hover {
+        text-decoration-line: none;
+        .icon {
+          color: @button-background-color-selected;
+        }
+      }
+    }
+  }
+}
+
+.kite-examples-list {
+  .kite-list;
+}
+
+.kite-split-line {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: baseline;
+
+  > * {
+    flex: 1 1 0;
+  }
+
+  > :last-child {
+    text-align: right;
+    padding-left: @component-padding;
+    &:empty {
+      display: none;
+    }
+  }
+
+  & + .split-line {
+    margin-top: @half-padding;
+  }
+
+  .name {
+    padding-left: @sidebar-left-indent;
+    text-indent: -@sidebar-left-indent;
+  }
+}
+
+.kite-content {
+  .kite-code;
+
+  cursor: default;
+
+  .debug {
+    margin-top: @half-padding;
+    flex: 0 1 auto;
+    display: flex;
+    max-height: 300px;
+
+    pre {
+      flex: 1 1 auto;
+      cursor: text;
+      -webkit-user-select: all;
+      user-select: all;
+      overflow: auto;
+
+      > * {
+        pointer-events: none;
+      }
+    }
+  }
+
+  kite-expand-module, kite-expand-function, kite-expand-instance,
+  kite-expand-unknown, kite-curated-example, kite-examples-list {
+    flex-direction: column;
+
+    .expand-header {
+      flex: 0 0 auto;
+      overflow-x: auto;
+      z-index: 1;
+
+      background: @sidebar-header-background;
+      box-shadow: 0 3px 6px @tab-background-color;
+
+      padding: (1.5 * @component-padding) @sidebar-horizontal-padding;
+      margin-right: -@sidebar-horizontal-padding;
+
+      .signature a.kwargs {
+        pointer-events: none;
+        color: @text-color;
+        text-decoration-line: none;
+
+        .parameter-name {
+          color: @text-color;
+        }
+      }
+    }
+
+    section.summary,
+    section.how-to,
+    section.links,
+    section.usages,
+    section.examples-from-your-code {
+      .kite-section-strike;
+    }
+
+    section.highlight-section {
+      z-index: 10000;
+      animation-fill-mode: both;
+      animation-name: section-highlight-animation;
+      animation-duration: 1250ms;
+    }
+
+    @keyframes section-highlight-animation {
+      0% {
+        background-color: @hover-background-color;
+      }
+      100% {
+        background-color: @tab-background-color;
+      }
+    }
+
+    section .kite-pro-features {
+      text-align: center;
+      border: 1px dashed @inset-panel-background-color;
+      border-radius: 10px;
+      padding: @component-padding;
+      margin-top: @component-padding;
+      margin-bottom: @component-padding;
+      color: @text-color-subtle;
+      a {
+        color: inherit;
+        white-space: nowrap;
+      }
+    }
+
+    section.summary {
+      .kite-table;
+    }
+
+    section.kwargs,
+    section.parameters {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+
+      dl {
+        margin-top: 0;
+      }
+
+      .section-content {
+        flex: 0 1 auto;
+        overflow-y: auto;
+      }
+    }
+
+    section.parameters + section.kwargs {
+      margin-top: -@double-padding;
+    }
+  }
+
+  a {
+    * {
+      pointer-events: none;
+    }
+
+
+    &[href] {
+      &, &:hover, &:active, &:focus, code {
+        text-decoration: underline;
+        text-decoration-color: mix(@text-color, transparent, 66%);
+      }
+      &:hover, &:hover * {
+        color: @button-background-color-selected;
+        text-decoration-color: @button-background-color-selected;
+      }
+    }
+
+    &:not([href]) {
+      pointer-events: none;
+      &, &:hover, &:active, &:focus, code {
+        color: inherit;
+      }
+    }
+
+    &.external_link::after {
+      content: "\f07f";
+      font-family: 'Octicons Regular';
+    }
+
+    &.unreachable {
+      .unreachable;
+    }
+
+    i {
+      font-style: normal;
+      font-size: 0.8em;
+      font-weight: lighter;
+    }
+  }
+
+  .scroll-wrapper {
+    flex: 1 1 auto;
+    position: relative;
+    transform: translateZ(0);
+
+    .sections-wrapper {
+      overflow-y: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  h4 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: normal;
+    color: @text-color-subtle;
+
+    .sticky {
+      padding: @component-padding 0;
+
+      &.fixed {
+        cursor: pointer;
+        position: fixed;
+        box-sizing: border-box;
+        z-index: 10;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .learn-more {
+      position: absolute;
+      color: @text-color-subtle;
+      right: -0.5em; // Right alignment
+      padding: 0.5em;
+      margin: -0.5em;
+    }
+  }
+
+  .highlight-title h4 {
+    color: @text-color-selected;
+  }
+
+  .type {
+    white-space: nowrap;
+    color: @text-color;
+  }
+
+  .signature {
+    word-break: break-word;
+  }
+
+  .split-line {
+    .kite-split-line;
+  }
+
+  section {
+    margin: 0;
+    margin-bottom: @double-padding;
+
+    .section-content {
+      margin-left: @sidebar-left-indent;
+      margin-top: 0;
+    }
+  }
+  .expand-header {
+    color: @text-color-highlight;
+
+    .name {
+      font-size: 1.4em;
+
+      word-break: break-word;
+
+      code {
+        font-size: inherit;
+        color: @text-color;
+      }
+    }
+
+    .type {
+      font-size: .9em;
+      display: inline-block;
+      flex: 0;
+      padding: .3em .5em;
+      margin-left: @half-padding;
+      line-height: 1.1;
+      border: 1px solid @text-color-subtle;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+
+      a {
+        color: @text-color-info;
+        text-decoration-line: none;
+      }
+    }
+  }
+
+  .collapsible .icon.icon-fold,
+  .collapsible .icon.icon-unfold {
+    display: block;
+    text-align: center;
+    height: 3em;
+    line-height: 3.3em;
+    color: @text-color-subtle;
+    margin-left: @double-padding;
+
+    &:hover {
+      color: @button-background-color-selected;
+    }
+  }
+
+  section.collapsible {
+    .section-content + * {
+      margin-bottom: @component-padding;
+    }
+
+    &.collapse .section-content {
+      max-height: 14.5em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    &.collapse.overflow .section-content::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      border-top: 1px solid @subtle-border-color;
+    }
+  }
+
+  section.summary {
+    .description {
+      font-size: 1em;
+      color: @text-color;
+
+      line-height: 1.8;
+      p {
+        line-height: 1.8;
+      }
+      pre,
+      code {
+        background: @base-background-color;
+        word-wrap: normal;
+        word-break: break-word;
+        white-space: pre-wrap;
+      }
+      code {
+        line-height: 0; // Don’t allow code to change the vertical rhythm of text
+        padding: 0.2em;
+        margin: -0.2em 0.1em;
+      }
+      pre {
+        padding-left: 4ch;
+        text-indent: -4ch;
+      }
+      em {
+        line-height: 0; // Don’t allow code to change the vertical rhythm of text
+        // Turn italics (which look bad) into brighter code
+        color: @text-color-highlight;
+        font-style: normal;
+        font-family: var(--editor-font-family);
+        font-size: var(--editor-font-size);
+      }
+
+      h1, h2, h3, h4 {
+        font-size: inherit;
+        margin: inherit;
+        line-height: inherit;
+      }
+    }
+  }
+
+  section.collapsed {
+    > :not(h4) {
+      display: none !important;
+    }
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+
+  section.popular-members {
+    .split-line {
+      .name {
+        flex: 1 1 auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .type {
+        flex: 0 0 auto;
+      }
+    }
+  }
+
+  section.how-to {
+    .kite-examples-list;
+  }
+
+  section.links {
+    .kite-examples-list;
+  }
+
+  section.popular-members a.more-members,
+  section.how-to a.more-examples,
+  section.links a.more-links {
+    display: block;
+    margin-top: @half-padding;
+    margin-bottom: @double-padding;
+    margin-right: -@half-padding;
+    position: relative;
+    border-top: 1px solid @subtle-border-color;
+    padding-top: @component-padding;
+
+    text-decoration-line: none;
+
+    .icon { // Chevron
+      // TODO: Opportunity to unify CSS: This section is repeated elsewhere in this file
+      position: absolute;
+      top: 0.8em;
+      right: -0.8em; // Right tip aligns with right margin
+      color: @text-color-subtle;
+    }
+
+    &:hover {
+      .icon {
+        color: @button-background-color-selected;
+      }
+    }
+  }
+
+  section.definition {
+    .kite-icon-list;
+
+    ul li > a {
+      text-decoration-line: underline;
+    }
+  }
+
+  section.patterns,
+  section.examples-from-your-code {
+    pre {
+      // Indent every line except the first one by 4 spaces
+      padding-left: 4ch;
+      text-indent: -4ch;
+
+      border: 0;
+      background: transparent;
+
+      -webkit-user-select: text;
+      cursor: text;
+
+      word-wrap: normal;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+  }
+
+  section.examples-from-your-code {
+    .section-content {
+      .usages-box {
+        .usage-container {
+          display: flex;
+          align-items: center;
+          align-content: center;
+          justify-content: space-between;
+        }
+
+        .usage {
+          flex-grow: 1;
+          margin: 0;
+          padding-bottom: @component-padding;
+
+          & + .usage {
+            margin-top: 1px;
+          }
+
+          pre {
+            margin: 0;
+          }
+
+          .links {
+            display: inline-block;
+            white-space: nowrap;
+
+            .icon:before {
+              color: @text-color-subtle;
+            }
+
+            .web-link {
+              cursor: pointer;
+              opacity: 0.7;
+              border-radius: 0.25em;
+              padding: 0.25em 0.5em;
+              background-color: lighten(@background-color-selected, 8%);
+              color: lighten(@text-color, 8%);
+              &:hover {
+                opacity: 1;
+                text-decoration-line: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    margin: 0 0 @double-padding;
+    padding: 0;
+    list-style: none;
+
+    li {
+      overflow: hidden;
+
+      .icon::before {
+        margin: 0;
+      }
+
+      .icon, > .file, > .example, > .link {
+        display: inline-block;
+      }
+
+      .icon-file-code::before {
+        color: @text-color-subtle;
+        font-size: 1.2em;
+        line-height: 1em;
+        height: 1em;
+        margin-right: -0.2em;
+      }
+
+      pre {
+        clear: both;
+        margin-top: @half-padding;
+        margin-left: @double-padding;
+      }
+    }
+  }
+
+  ul li + li {
+    margin-top: @half-padding;
+  }
+  ul.code li + li {
+    margin-top: 0;
+  }
+
+  dl, ul {
+    margin: @component-padding 0 0;
+
+    dt, li {
+      color: @text-color;
+      font-weight: normal;
+
+      .name {
+        a, a:hover, a:active, a:focus {
+          &.unreachable {
+            .unreachable;
+          }
+        }
+      }
+    }
+
+    dd {
+      p {
+        margin: 0;
+      }
+      a {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  pre {
+    a.icon {
+      &, &:hover, &:active, &:focus,  {
+        color: @button-background-color-selected;
+      }
+    }
+  }
+
+  p {
+    /* Default Atom p margin is asymmetrical. Overriding for sanity */
+    margin: 0.5em 0;
+  }
+  p:first-child {
+    // Helps with collapsing panels, since margin cannot be joined with
+    // adjacent margin when “overflow: hidden” is applied – but will be
+    // if it‘s not, resulting in shifting
+    margin-top: 0;
+  }
+}
+
+.line-colon {
+  color: @text-color-subtle;
+  letter-spacing: 0.2em;
+}

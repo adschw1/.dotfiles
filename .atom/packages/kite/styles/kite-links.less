@@ -1,0 +1,39 @@
+@import "variables";
+
+kite-links {
+
+  &.one-line {
+    margin-top: @component-padding;
+    margin-left: -0.9em;
+
+    line-height: 1.0;
+
+    .flex-separator {
+      flex-grow: 1;
+    }
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+  a, a:hover, a:focus, a:active {
+    color: @text-color-info;
+    font-size: 1rem;
+    flex: 0;
+    text-decoration: none !important;
+    display: inline-block;
+    padding: 1em 0.3em;
+    margin: -1em 0;
+  }
+  a:hover {
+    color: @text-color-highlight !important;
+    text-decoration: underline;
+  }
+
+  a:first-of-type {
+    padding-left: 1em;
+  }
+  a:last-of-type {
+    padding-right: 1em;
+  }
+}

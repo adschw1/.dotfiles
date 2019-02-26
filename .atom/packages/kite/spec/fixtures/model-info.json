@@ -1,0 +1,26 @@
+{
+  "date_shipped": "Tue Mar 20 2018 13:04:11 GMT+0100 (CET)",
+  "examples": [{
+    "synopsis": "Some string",
+    "old": [{
+      "text": "for x in list:",
+      "line": 0,
+      "emphasis": [{
+        "start_bytes": 13,
+        "end_bytes": 14,
+        "start_runes": 13,
+        "end_runes": 14
+      }]
+    }],
+    "new": [{
+      "text": "for x in list",
+      "line": 0,
+      "emphasis": [{
+        "start_bytes": 12,
+        "end_bytes": 13,
+        "start_runes": 12,
+        "end_runes": 13
+      }]
+    }]
+  }]
+}

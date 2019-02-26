@@ -1,0 +1,66 @@
+@import "ui-variables";
+@import "variables";
+
+.kite-status {
+  display: inline-block;
+
+  .text:empty {
+    display: none;
+  }
+
+  kite-logo {
+    height: 16px;
+    width: 16px;
+  }
+  kite-logo.badge {
+    margin: 0px;
+    margin-bottom: 3px;
+    background: none;
+  }
+
+  kite-logo[sync] {
+    display: none;
+  }
+
+  &[is-indexing],
+  &[is-syncing] {
+    kite-logo[sync] {
+      display: inline-block;
+    }
+
+    kite-logo[small] {
+      display: none;
+    }
+  }
+
+  .text {
+    margin-left: @half-padding;
+
+    kbd {
+      font-family: sans-serif;
+      font-size: 1em;
+    }
+  }
+
+  &[status="unknown"],
+  &[status="unsupported"] {
+    display: none;
+  }
+
+  &[status="ready"] {
+    kite-logo svg path,
+    kite-logo svg polygon {
+      fill: @text-color;
+    }
+  }
+
+  &[status="uninstalled"],
+  &[status="running"],
+  &[status="installed"] {
+    color: @text-color-error;
+    kite-logo svg path,
+    kite-logo svg polygon {
+      fill: @text-color-error;
+    }
+  }
+}
