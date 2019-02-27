@@ -2,7 +2,7 @@
 
 require('./kite-links');
 const {Point, CompositeDisposable} = require('atom');
-const {symbolName, symbolKind} = require('../kite-data-utils');
+const {symbolName, symbolType} = require('../kite-data-utils');
 const {internalGotoURL, internalExpandURL} = require('../urls');
 const {debugData, wrapAfterParenthesisAndDots} = require('./html-utils');
 const {DisposableEvent} = require('../utils');
@@ -44,7 +44,7 @@ class KiteHover extends HTMLElement {
       this.innerHTML = `
     <div class="definition">
       <span class="name"><code>${wrapAfterParenthesisAndDots(symbolName(symbol))}</code></span>
-      <span class="type">${symbolKind(symbol)}</span>
+      <span class="type">${symbolType(symbol)}</span>
     </div>
     <kite-links class="one-line" metric="Hover">
       ${actions.join(' ')}

@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/kite/versions/0.149.0/tarball",
-  "_id": "kite@0.149.0",
+  "_from": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
+  "_id": "kite@0.150.0",
   "_inBundle": false,
-  "_integrity": "sha512-myyX6cHRkuZp3qOYA1ZvmPoTGAuQEA9wA0RgNc4V7KPTsNwF/jlyFRkfiGXwJmxusvOUEYXpRn9gnmul7ZBshQ==",
+  "_integrity": "sha512-B4O8KgFgET+Uui+rVKzqeHrI+vSqucrFC/MGXqbqaAuk7kw90tMUnJBoyg17UL4ppHA6iVqhFLI9u1hN+e0nBg==",
   "_location": "/kite",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/kite/versions/0.149.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/kite/versions/0.149.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/kite/versions/0.149.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/kite/versions/0.149.0/tarball"
+    "raw": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/kite/versions/0.149.0/tarball",
-  "_shasum": "668a707b4ca8aa23fa93c34a8c7e35021b903a89",
-  "_spec": "https://www.atom.io/api/packages/kite/versions/0.149.0/tarball",
-  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119124-91384-tzvxt8.vedq",
+  "_resolved": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
+  "_shasum": "b3e8922496caae02587d9e0c43bcef1a1c4b3822",
+  "_spec": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
+  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119126-1387-16fjwz8.aldj",
   "bugs": {
     "url": "https://github.com/kiteco/atom-plugin/issues"
   },
@@ -96,8 +96,8 @@
     "element-resize-detector": "^1.1.11",
     "fuzzaldrin-plus": "^0.4.1",
     "getmac": "1.2.1",
-    "kite-api": "^2.3.0",
-    "kite-connector": "^2.1.0",
+    "kite-api": "^2.6.0",
+    "kite-connector": "^2.5.0",
     "kite-installer": "^3.2.0",
     "md5": "^2.2.0",
     "rollbar": "^2.3.8",
@@ -144,5 +144,5 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
-  "version": "0.149.0"
+  "version": "0.150.0"
 }

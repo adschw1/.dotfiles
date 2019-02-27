@@ -119,6 +119,7 @@ module.exports = {
             type: 'overlay',
             position: 'tail',
             item: hover,
+            class: 'kite-hover',
           });
           this.emitter.emit('did-show-hover');
         }

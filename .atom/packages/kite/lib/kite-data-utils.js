@@ -188,7 +188,8 @@ const extractFunctionType = v => {
 
 const symbolType = s =>
   symbolKind(s) === 'instance'
-    ? unionType(s.value, extractInstanceType)
+    //only take the first 3 for UI purposes
+    ? unionType(s.value.slice(0, 3), extractInstanceType) || 'instance'
     : symbolKind(s);
 
 const symbolReturnType = s => unionType(s.value, extractFunctionType);

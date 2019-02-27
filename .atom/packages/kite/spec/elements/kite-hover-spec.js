@@ -74,7 +74,7 @@ describe('KiteHover', () => {
       it('sets the type of the hover using the provided value', () => {
         const type = hover.querySelector('.type');
 
-        expect(type.textContent).toEqual('instance');
+        expect(type.textContent).toEqual('int');
       });
     });
 
@@ -92,7 +92,7 @@ describe('KiteHover', () => {
       it('sets the type of the hover using the provided value', () => {
         const type = hover.querySelector('.type');
 
-        expect(type.textContent).toEqual('instance');
+        expect(type.textContent).toEqual('int | list[int]');
       });
 
       describe('that have duplicated types', () => {
@@ -100,10 +100,10 @@ describe('KiteHover', () => {
           hover.setData(require('../fixtures/parameter.json'), editor, range);
         });
 
-        it('display only one instance for each unique type', () => {
+        it('displays an instance type for each unique type', () => {
           const type = hover.querySelector('.type');
 
-          expect(type.textContent).toEqual('instance');
+          expect(type.textContent).toEqual('str | int');
         });
       });
     });

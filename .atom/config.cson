@@ -5,6 +5,9 @@
       beautifyEntireFileOnSave: false
   "atom-clock":
     dateFormat: "h:mm a\t"
+  "atom-ide-ui":
+    "atom-ide-diagnostics-ui":
+      autoVisibility: true
   "atom-runner":
     paneSplitDirection: "Down"
   autosave:
@@ -14,6 +17,10 @@
       "atom-runner"
       "vim-mode-plus"
       "atom-beautify"
+      "linter-flake8"
+      "linter"
+      "ide-python"
+      "ide-java"
     ]
     packagesWithKeymapsDisabled: []
     telemetryConsent: "limited"
@@ -23,6 +30,7 @@
     ]
     useTreeSitterParsers: false
   editor:
+    fontFamily: "Hack"
     fontSize: 13
     showIndentGuide: true
     softWrap: true
@@ -34,7 +42,6 @@
       incompleteClasspathSeverity: "ignore"
   kite:
     showWelcomeNotificationOnStartup: false
-  "linter-ui-default":
-    showPanel: true
+  "linter-ui-default": {}
   welcome:
     showOnStartup: false

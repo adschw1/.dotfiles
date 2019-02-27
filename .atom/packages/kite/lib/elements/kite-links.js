@@ -16,6 +16,13 @@ class KiteLinks extends HTMLElement {
     return this.emitter.on('did-click-more-link', listener);
   }
 
+  onDidClickActionLink(listener) {
+    if (this.emitter.disposed) {
+      return null;
+    }
+    return this.emitter.on('did-click-action-link', listener);
+  }
+
   constructor() {
     super();
     this.emitter = new Emitter();
@@ -31,15 +38,27 @@ class KiteLinks extends HTMLElement {
       if (!Kite) { Kite = require('../kite'); }
       const editor = atom.workspace.getActiveTextEditor();
       const kiteEditor = Kite.getModule('editors').kiteEditorForEditor(editor);
+      const emitAction = this.getAttribute('emit-action');
       switch (url.host) {
         case 'open-settings':
+          emitAction && this.emitter.emit('did-click-action-link');
           atom.applicationDelegate.openExternal('atom://settings-view/show-package?package=kite');
           return;
         case 'open-copilot-settings':
+          emitAction && this.emitter.emit('did-click-action-link');
           atom.applicationDelegate.openExternal('kite://settings');
           return;
         case 'open-copilot-permissions':
+          emitAction && this.emitter.emit('did-click-action-link');
           atom.applicationDelegate.openExternal(`kite://settings/permissions${url.path || ''}`);
+          return;
+        case 'open-search-docs':
+          emitAction && this.emitter.emit('did-click-action-link');
+          atom.applicationDelegate.openExternal('http://localhost:46624/clientapi/desktoplogin?d=/docs');
+          return;
+        case 'open-kite-plugin-help':
+          emitAction && this.emitter.emit('did-click-action-link');
+          atom.applicationDelegate.openExternal('http://help.kite.com/category/43-atom-integration');
           return;
       }
 

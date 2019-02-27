@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/ide-python/versions/1.2.3/tarball",
-  "_id": "ide-python@1.2.3",
+  "_from": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
+  "_id": "ide-python@1.3.0",
   "_inBundle": false,
-  "_integrity": "sha512-ap1a6Zyosr7eehBQrsAsYsyzdkqM6AE8cdH/I34TIOsMGSIpoOR4WX4ZkN3C8jOrC0pAcQaR1Bl0cdzq+c1W7g==",
+  "_integrity": "sha512-Q4+mh4MqmH8GXNkpJJHYk0aNJiNHWzASfBktw67ClbjSyB55M3G9XgElbeTTE6FJ+wIKKkbCxmtqun+ZKS2/zg==",
   "_location": "/ide-python",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/ide-python/versions/1.2.3/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/ide-python/versions/1.2.3/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/ide-python/versions/1.2.3/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/ide-python/versions/1.2.3/tarball"
+    "raw": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/ide-python/versions/1.2.3/tarball",
-  "_shasum": "f4267f0ae8bb036af0d7bbd485cd93a4024f3ce5",
-  "_spec": "https://www.atom.io/api/packages/ide-python/versions/1.2.3/tarball",
-  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119125-99017-yk0ecx.3yrz",
+  "_resolved": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
+  "_shasum": "145f56a0e20f72b8ae1bf1c31bc233b64ac147af",
+  "_spec": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
+  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119127-3244-nbupne.cq9l",
   "activationHooks": [
     "core:loaded-shell-environment"
   ],
@@ -65,6 +65,12 @@
               "type": "boolean",
               "default": true,
               "description": "Enable or disable Jedi Completion."
+            },
+            "include_params": {
+              "title": "Include parameters",
+              "type": "boolean",
+              "default": true,
+              "description": "Auto-completes methods and classes with tabstops for each parameter."
             }
           }
         },
@@ -578,5 +584,5 @@
     "type": "git",
     "url": "git+https://github.com/lgeiger/ide-python.git"
   },
-  "version": "1.2.3"
+  "version": "1.3.0"
 }

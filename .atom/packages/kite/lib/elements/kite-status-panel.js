@@ -51,6 +51,14 @@ class KiteStatusPanel extends HTMLElement {
 
       this.subscriptions = new CompositeDisposable();
 
+      const links = this.querySelector('kite-links');
+      if (links) {
+        const linksCb = links.onDidClickActionLink(() => {
+          this.hide();
+        });
+        linksCb && this.subscriptions.disposed && this.subscriptions.add(linksCb);
+      }
+
       this.subscriptions.add(this.scheme);
 
       this.subscriptions.add(this.scheme.onDidClickLink(opts => this.handleAction(opts)));
@@ -110,8 +118,13 @@ class KiteStatusPanel extends HTMLElement {
 
     let promise;
     switch (url.host) {
+      case 'open-account-web':
+        atom.applicationDelegate.openExternal('http://localhost:46624/clientapi/desktoplogin?d=/settings/account');
+        this.hide();
+        break;
       case 'open-copilot-settings':
-        atom.applicationDelegate.openExternal('kite://settings');
+        this.app.copilotSettings();
+        this.hide();
         break;
       case 'open-copilot-permissions':
         atom.applicationDelegate.openExternal(`kite://settings/permissions${url.path || ''}`);
@@ -213,10 +226,10 @@ class KiteStatusPanel extends HTMLElement {
 
   renderLinks(account) {
     return `
-    <kite-links>
+    <kite-links emit-action="true">
     <ul class="links ${account ? 'has-account' : 'no-account'}">
-      <li><a class="icon icon-search account-dependent" href="http://localhost:46624/clientapi/desktoplogin?d=/docs">Search Python Docs</a></li>
-      <li><a class="icon icon-question" href="http://help.kite.com/category/43-atom-integration">Help</a></li>
+      <li><a class="icon icon-search account-dependent" href="kite-atom-internal://open-search-docs">Search Python Docs</a></li>
+      <li><a class="icon icon-question" href="kite-atom-internal://open-kite-plugin-help">Help</a></li>
     </ul>
     <ul class="links ${account ? 'has-account' : 'no-account'}">
       <li><a class="icon icon-settings" href="kite-atom-internal://open-settings">Atom Plugin Settings</a></li>
@@ -313,7 +326,7 @@ class KiteStatusPanel extends HTMLElement {
       <div class="left"><kite-logo small></kite-logo></div>
       <div class="right">${
         status.state >= STATES.READY
-        ? '<a href="http://localhost:46624/clientapi/desktoplogin?d=/settings/acccount">Account</a>'
+        ? '<a href="kite-atom-internal://open-account-web">Account</a>'
         : ''
       }</div>
     </div>`;

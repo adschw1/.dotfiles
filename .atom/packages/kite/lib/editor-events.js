@@ -62,7 +62,9 @@ class EditorEvents {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => this.mergeEvents(), 0);
 
-    return this.pendingPromise;
+    // was resulting in unhandled Promise rejection from `this.pendingPromiseReject(err)`
+    // below... so we catch it
+    return this.pendingPromise.catch((err) => {});
   }
 
   mergeEvents() {

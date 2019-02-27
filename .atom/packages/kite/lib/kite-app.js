@@ -294,6 +294,10 @@ class KiteApp {
     atom.applicationDelegate.openExternal('kite://home');
   }
 
+  copilotSettings() {
+    atom.applicationDelegate.openExternal('kite://settings');
+  }
+
   saveUserID() {
     ensureKiteDeps();
     ensureUtils();
