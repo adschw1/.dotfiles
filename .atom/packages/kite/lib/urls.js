@@ -30,26 +30,6 @@ function authorizedPath(editor) {
   return `/clientapi/permissions/authorized?filename=${encodeURI(editor.getPath())}`;
 }
 
-function autocorrectPath() {
-  return '/clientapi/editor/autocorrect';
-}
-
-function autocorrectModelInfoPath() {
-  return '/api/editor/autocorrect/model-info';
-}
-
-function autocorrectMetricsPath() {
-  return '/clientapi/editor/autocorrect/metrics';
-}
-
-function autocorrectFeedbackPath() {
-  return '/clientapi/editor/autocorrect/feedback';
-}
-
-function onSaveValidationPath() {
-  return '/clientapi/editor/autocorrect/validation/on-save';
-}
-
 function searchPath(query, offset = 0, limit = 10) {
   return [
     '/api/editor/search',
@@ -218,10 +198,6 @@ function serializePositionForPath(position) {
 module.exports = {
   accountPath,
   authorizedPath,
-  autocorrectFeedbackPath,
-  autocorrectMetricsPath,
-  autocorrectModelInfoPath,
-  autocorrectPath,
   completionsPath,
   examplePath,
   hoverPath,
@@ -238,7 +214,6 @@ module.exports = {
   languagesPath,
   membersPath,
   metricsCounterPath,
-  onSaveValidationPath,
   openExampleInWebURL,
   projectDirPath,
   reportPath,

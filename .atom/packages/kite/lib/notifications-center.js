@@ -4,7 +4,6 @@ const os = require('os');
 const {CompositeDisposable, Emitter} = require('atom');
 const KiteAPI = require('kite-api');
 const {STATES} = KiteAPI;
-const DataLoader = require('./data-loader');
 const {fromSetting, all} = require('./conditions');
 const toSentence = a => `${a.slice(0, -1).join(', ')} and ${a.pop()}`;
 const KiteNotification = require('./kite-notification');
@@ -158,26 +157,6 @@ class NotificationsCenter {
       condition: all(
         fromSetting('kite.showWelcomeNotificationOnStartup'),
         () => !atom.inSpecMode()),
-    });
-  }
-
-  notifyErrorRescueVersionChange(version) {
-    DataLoader.getAutocorrectModelInfo(version).then(data => {
-      const [example] = data.examples;
-      this.queue.addInfo(
-        `#### Kite Error Rescue has just been updated\n${example.synopsis}`, {
-          dismissable: true,
-          detail: `${example.old.map(d => d.text).join('\n')}\n${example.new.map(d => d.text).join('\n')}`,
-          buttons: [{
-            text: 'Learn more',
-            onDidClick(dismiss) {
-              const Kite = require('./kite');
-
-              dismiss && dismiss();
-              Kite.toggleErrorRescueSidebar(true);
-            },
-          }],
-        });
     });
   }
 

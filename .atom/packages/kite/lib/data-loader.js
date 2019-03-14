@@ -17,21 +17,6 @@ const DataLoader = {
     return KiteAPI.getSupportedLanguages();
   },
 
-  postSaveValidationData(editor) {
-    const buffer = editor.getBuffer();
-    const text = buffer.getText();
-
-    return KiteAPI.postSaveValidationData(editor.getPath(), text, this.getAutocorrectMetadata());
-  },
-
-  postAutocorrectHashMismatchData(response, requestStartTime) {
-    return KiteAPI.postAutocorrectHashMismatchData(response, requestStartTime, this.getAutocorrectMetadata());
-  },
-
-  postAutocorrectFeedbackData(response, feedback) {
-    return KiteAPI.postAutocorrectFeedbackData(response, feedback, this.getAutocorrectMetadata());
-  },
-
   getPlugins() {
     return KiteAPI.requestJSON({
       path: '/clientapi/plugins',
@@ -99,24 +84,6 @@ const DataLoader = {
     const text = buffer.getText();
     const cursorPosition = buffer.characterIndexForPosition(position);
     return KiteAPI.getSignaturesAtPosition(editor.getPath(), text, cursorPosition, 'atom');
-  },
-
-  getAutocorrectData(editor) {
-    const buffer = editor.getBuffer();
-    const text = buffer.getText();
-
-    return KiteAPI.getAutocorrectData(editor.getPath(), text, this.getAutocorrectMetadata());
-  },
-
-  getAutocorrectModelInfo(version) {
-    return KiteAPI.getAutocorrectModelInfo(version, this.getAutocorrectMetadata());
-  },
-
-  getAutocorrectMetadata() {
-    return {
-      source: 'atom',
-      plugin_version: metrics.version,
-    };
   },
 
   getHoverDataAtRange(editor, range) {

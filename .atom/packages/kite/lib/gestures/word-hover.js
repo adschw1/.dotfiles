@@ -2,7 +2,7 @@
 
 const {CompositeDisposable} = require('atom');
 const MouseEventGesture = require('./mouse-event');
-const {DisposableEvent} = require('../utils');
+const {DisposableEvent, isWithinTextOfLine} = require('../utils');
 
 module.exports = class HoverGesture extends MouseEventGesture {
   constructor(editor, options) {
@@ -36,10 +36,12 @@ module.exports = class HoverGesture extends MouseEventGesture {
       const textRange = this.wordRangeForMouseEvent(event);
 
       if (textRange && this.lastRange && !this.lastRange.isEqual(textRange) && !textRange.isEmpty()) {
-        this.activate({
-          position: this.screenPositionForMouseEvent(event),
-          range: textRange,
-        });
+        if (isWithinTextOfLine(this.editorElement, event)) {
+          this.activate({
+            position: this.screenPositionForMouseEvent(event),
+            range: textRange,
+          });
+        }
       } else if (!textRange || textRange.isEmpty()) {
         this.deactivate();
       }

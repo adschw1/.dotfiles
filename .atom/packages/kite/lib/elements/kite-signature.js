@@ -52,7 +52,10 @@ class KiteSignature extends HTMLElement {
         frameRequested = false;
       });
     });
-    this.resizeObserver.observe(element);
+    // sometimes parentNode can be a Document
+    if (element instanceof Element) {
+      this.resizeObserver.observe(element);
+    }
 
 
     requestAnimationFrame(() => this.checkWidth());

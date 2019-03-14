@@ -210,6 +210,21 @@ function delayPromise(factory, timeout) {
   });
 }
 
+function isWithinTextOfLine(editorElement, event) {
+  const pixelPosition = pixelPositionForMouseEvent(editorElement, event);
+  const defaultCharWidth = editorElement.getDefaultCharWidth
+    ? editorElement.getDefaultCharWidth(pixelPosition) 
+    : editorElement.getModel().getDefaultCharWidth(pixelPosition);
+  const screenPosition = editorElement.screenPositionForPixelPosition
+    ? editorElement.screenPositionForPixelPosition(pixelPosition) 
+    : editorElement.getModel().screenPositionForPixelPosition(pixelPosition);
+  const lineLengthForRow = editorElement.lineLengthForScreenRow
+    ? editorElement.lineLengthForScreenRow(screenPosition.row) 
+    : editorElement.getModel().lineLengthForScreenRow(screenPosition.row);
+  const maxLeftPixelPos = defaultCharWidth * (lineLengthForRow + 4); // extra chars for better ui
+  return maxLeftPixelPos >= pixelPosition.left;
+}
+
 function bufferPositionForMouseEvent(editorElement, event) {
   return editorElement.getModel().bufferPositionForScreenPosition(screenPositionForMouseEvent(editorElement, event));
 }
@@ -280,6 +295,7 @@ module.exports = {
   getDetails,
   getFunctionDetails,
   head,
+  isWithinTextOfLine,
   last,
   log,
   merge,

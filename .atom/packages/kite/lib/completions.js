@@ -164,6 +164,9 @@ const KiteProvider = {
     if (this.suggestionListElement) { return this.suggestionListElement; }
 
     const pkg = atom.packages.getActivePackage('autocomplete-plus').mainModule;
+    if (!pkg || !pkg.autocompleteManager || !pkg.autocompleteManager.suggestionList) {
+      return null;
+    }
     const list = pkg.autocompleteManager.suggestionList;
     this.suggestionListElement = list.suggestionListElement
       ? list.suggestionListElement

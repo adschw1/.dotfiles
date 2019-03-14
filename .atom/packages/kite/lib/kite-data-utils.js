@@ -43,20 +43,24 @@ const parameterType = (p, prefix = '') =>
 const parameterValue = p =>
   `${parameterName(p)}${parameterType(p, ':')}${parameterDefault(p)}`;
 
-const parameters = (d, withType = true) =>
+
+const parameters = (d, withType = true, keywordOnly = false) =>
   d.parameters
     ? (withType
-      ? d.parameters.map(parameterValue)
-      : d.parameters.map(p => `${parameterName(p)}${parameterDefault(p)}`))
+      ? d.parameters.filter( p => keywordOnly === detailGet(p, 'keyword_only') ).map(parameterValue)
+      : d.parameters.filter( p => keywordOnly === detailGet(p, 'keyword_only') ).map(p => `${parameterName(p)}${parameterDefault(p)}`))
     : [];
 
 const gatherParameters = (detail, withType) => {
   const lang = detailLang(detail);
+  const keywordOnly = parameters(detail, withType, true);
+  const vararg = detailGet(detail, 'vararg') || ( keywordOnly.length > 0 && { name: '' } );
   switch (lang) {
     case 'python':
       return [
-        parameters(detail, withType),
-        parameterName(detailGet(detail, 'vararg'), '*'),
+        parameters(detail, withType, false),
+        parameterName(vararg, '*'),
+        keywordOnly,
         parameterName(detailGet(detail, 'kwarg'), '**', 'a class="kwargs" href="#"'),
       ];
     case 'javascript':

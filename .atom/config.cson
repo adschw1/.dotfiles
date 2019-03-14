@@ -31,7 +31,7 @@
     useTreeSitterParsers: false
   editor:
     fontFamily: "Hack"
-    fontSize: 13
+    fontSize: 11
     showIndentGuide: true
     softWrap: true
     tabLength: 4
@@ -42,6 +42,7 @@
       incompleteClasspathSeverity: "ignore"
   kite:
     showWelcomeNotificationOnStartup: false
-  "linter-ui-default": {}
+  "linter-ui-default":
+    panelHeight: 263
   welcome:
     showOnStartup: false

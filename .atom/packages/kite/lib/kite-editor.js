@@ -71,15 +71,6 @@ class KiteEditor {
         OverlayManager.dismissWithDelay();
       }
     }));
-
-    subs.add(editor.getBuffer().onWillSave(() => {
-      if (!Kite) { Kite = require('./kite'); }
-      return this.willSaveHook();
-    }));
-  }
-
-  willSaveHook() {
-    return DataLoader.postSaveValidationData(this.editor).catch(() => {});
   }
 
   expandPosition(position) {

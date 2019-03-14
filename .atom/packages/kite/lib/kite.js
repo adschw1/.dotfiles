@@ -405,11 +405,6 @@ const Kite = module.exports = {
     atom.applicationDelegate.openExternal(url);
   },
 
-  errorRescueVersion() {
-    const version = localStorage.getItem('kite.autocorrect_model_version');
-    return version ? parseInt(version, 10) : version;
-  },
-
   isSaveAll() {
     return this.saveAllTriggered;
   },

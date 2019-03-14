@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
-  "_id": "ide-python@1.3.0",
+  "_from": "https://www.atom.io/api/packages/ide-python/versions/1.4.1/tarball",
+  "_id": "ide-python@1.4.1",
   "_inBundle": false,
-  "_integrity": "sha512-Q4+mh4MqmH8GXNkpJJHYk0aNJiNHWzASfBktw67ClbjSyB55M3G9XgElbeTTE6FJ+wIKKkbCxmtqun+ZKS2/zg==",
+  "_integrity": "sha512-DFadw8hTGq/3stye4gP9u9btKccDihWJpBJJYdwd8LjFIfvqlqfF9oSHJ+b5q9Zb6bG+3FwklZVS6JiG6CEYgQ==",
   "_location": "/ide-python",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball"
+    "raw": "https://www.atom.io/api/packages/ide-python/versions/1.4.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/ide-python/versions/1.4.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/ide-python/versions/1.4.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/ide-python/versions/1.4.1/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
-  "_shasum": "145f56a0e20f72b8ae1bf1c31bc233b64ac147af",
-  "_spec": "https://www.atom.io/api/packages/ide-python/versions/1.3.0/tarball",
-  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119127-3244-nbupne.cq9l",
+  "_resolved": "https://www.atom.io/api/packages/ide-python/versions/1.4.1/tarball",
+  "_shasum": "bc13a5f8b3b9a811d8c62806ca207b9b50816bd7",
+  "_spec": "https://www.atom.io/api/packages/ide-python/versions/1.4.1/tarball",
+  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119213-8363-15o7lbv.llit",
   "activationHooks": [
     "core:loaded-shell-environment"
   ],
@@ -385,6 +385,18 @@
             }
           }
         },
+        "pylint": {
+          "title": "Pylint",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Enabled",
+              "type": "boolean",
+              "default": false,
+              "description": "Enable or disable Pylint. Note that Pylint can only be run on files that have been saved to disk."
+            }
+          }
+        },
         "rope_completion": {
           "title": "Rope Completion",
           "type": "object",
@@ -584,5 +596,5 @@
     "type": "git",
     "url": "git+https://github.com/lgeiger/ide-python.git"
   },
-  "version": "1.3.0"
+  "version": "1.4.1"
 }

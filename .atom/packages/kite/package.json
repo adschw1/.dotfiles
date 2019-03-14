@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
-  "_id": "kite@0.150.0",
+  "_from": "https://www.atom.io/api/packages/kite/versions/0.151.0/tarball",
+  "_id": "kite@0.151.0",
   "_inBundle": false,
-  "_integrity": "sha512-B4O8KgFgET+Uui+rVKzqeHrI+vSqucrFC/MGXqbqaAuk7kw90tMUnJBoyg17UL4ppHA6iVqhFLI9u1hN+e0nBg==",
+  "_integrity": "sha512-hIUsfKeqZl3LtNwS4oauACho3aNRJzA+4lw277y5V0x4w/wjl7JdJPAACTzBZ8/ypypWB4H6WPYzB/oOKi5+vg==",
   "_location": "/kite",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball"
+    "raw": "https://www.atom.io/api/packages/kite/versions/0.151.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/kite/versions/0.151.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/kite/versions/0.151.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/kite/versions/0.151.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
-  "_shasum": "b3e8922496caae02587d9e0c43bcef1a1c4b3822",
-  "_spec": "https://www.atom.io/api/packages/kite/versions/0.150.0/tarball",
-  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119126-1387-16fjwz8.aldj",
+  "_resolved": "https://www.atom.io/api/packages/kite/versions/0.151.0/tarball",
+  "_shasum": "01907fcfec36feb25f121067138478ecf6b68fa7",
+  "_spec": "https://www.atom.io/api/packages/kite/versions/0.151.0/tarball",
+  "_where": "/private/var/folders/3l/h_qsslb50kn6tf0zx3mrn_9c0000gn/T/apm-install-dir-119213-8231-1rra3tn.ly5y",
   "bugs": {
     "url": "https://github.com/kiteco/atom-plugin/issues"
   },
@@ -144,5 +144,5 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
-  "version": "0.150.0"
+  "version": "0.151.0"
 }
