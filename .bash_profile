@@ -24,9 +24,6 @@ if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completio
         complete -o default -o nospace -F _git g;
     fi;
 
-PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
-export PATH
-
 if [ -f $HOME/.bashrc]; then
 	. $HOME/.bashrc
 fi
