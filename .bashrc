@@ -4,7 +4,7 @@ alias ls="ls --color=auto"
 alias ll="ls -l --color=auto"
 alias less="less -X"
 alias vimr="vim -R"
-alias gtree="git log --all --decorate --max-count=20 --abbrev-commit --graph --pretty=format:\"%C(yellow)%h%Creset %C(cyan)%C(bold)%an%Creset %C(green)%cr%Creset %C(magenta)%d%Creset %C(white)%s\""
+alias graph="git log --all --decorate --max-count=20 --abbrev-commit --graph --pretty=format:\"%C(yellow)%h%Creset %C(cyan)%C(bold)%an%Creset %C(green)%cr%Creset %C(magenta)%d%Creset %C(white)%s\""
 
 # git stuff
 if tput setaf 1 &> /dev/null; then
@@ -41,26 +41,6 @@ export WHITE
 export BOLD
 export RESET
 
-function gstat {
-  echo "Showing branch info:"
-  git branch -a
-  echo "Listing remotes:"
-  git remote -v
-}
-
-function gsw {
-  echo "switching to puppet-$1"
-  cd "/home/bfain/git/puppet-$1"
-  gtree
-}
-
-function gh {
-  echo "switching to git home dir"
-  cd "/home/bfain/git"
-  echo "list of local repos:"
-  ll | grep puppet
-}
-
 function is_on_git() {
   git rev-parse 2> /dev/null
 }
@@ -78,9 +58,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+if [ -f $HOME/.bash_profile]; then
+	. $HOME/.bash_profile
+fi
+
 # User specific aliases and functions
 export PS1="\[$ORANGE\][\[$GREEN\]\u\[$ORANGE\]@\[${BOLD}${MAGENTA}\]\h \[$GREEN\]\w\[$BOLD\]\$(is_on_git && [[ -n \$(git branch 2> /dev/null) ]] && echo \":\")\[$PURPLE\]\$(parse_git_branch)\[$BOLD\]\[$ORANGE\]]\[$RESET\]# "
-
-# Proxy for a Virtualbox VM
-export http_proxy=http://a909858:nssv8iu2@proxyv.dpn.deere.com:82/
-

@@ -1,3 +1,6 @@
-# Dotfiles for life
-... the install.sh script is a work in progress.
-still working things out
+Dotfiles [daht·fahyl·uhs]
+=========================
+noun ~ `More Saving. More doing. That's the power of Dotfiles.`
+---------------------------------------------------------------
+
+I think I'm finally gonna make these work... maybe
