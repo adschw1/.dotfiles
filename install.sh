@@ -3,23 +3,6 @@
 DOTFILES="$HOME/.dotfiles"
 CURRENT_USER=$USER
 
-# to error out
-
-# warn() {
-#     echo "$1" >&2
-# }
-
-# die() {
-#     warn "$1"
-#     exit 1
-# }
-
-# lnif() {
-#     if [ ! -e $2 ] ; then
-#         ln -sfnv $1 $2
-#     fi
-# }
-
 echo "installing/updating dotfiles...\n"
 
 if [ ! -e $DOTFILES/.git ]; then
