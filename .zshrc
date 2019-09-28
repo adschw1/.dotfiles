@@ -13,8 +13,10 @@ alias df="df -H"
 alias fk="fuck"
 alias shit="fuck"
 alias oops="fuck"
+alias vimr="vim -R"
+alias graph="git log --all --decorate --max-count=20 --abbrev-commit --graph --pretty=format:\"%C(yellow)%h%Creset %C(cyan)%C(bold)%an%Creset %C(green)%cr%Creset %C(magenta)%d%Creset %C(white)%s\""
 
-export ZSH="~/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export UPDATE_ZSH_DAYS=7
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
