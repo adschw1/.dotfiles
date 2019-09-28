@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
-dotfiles="~/.dotfiles"
+DOTFILES="$HOME/.dotfiles"
+CURRENT_USER=$USER
 
 # to error out
 warn() {
     echo "$1" >&2
 }
-
 die() {
     warn "$1"
     exit 1
@@ -18,14 +18,14 @@ lnif() {
     fi
 }
 
-echo "Installing/Updating dotfiles...\n"
+echo "Installing/Updating DOTFILES...\n"
 
-if [ ! -e $dotfiles/.git ]; then
-    echo "Cloning dotfiles\n"
+if [ ! -e $DOTFILES/.git ]; then
+    echo "Cloning DOTFILES\n"
     # git clone ----repohere----
 else
-    echo "Updating dotfiles\n"
-    cd $dotfiles && git pull
+    echo "Updating DOTFILES\n"
+    cd $DOTFILES && git pull
 fi
 
 # bash
@@ -33,13 +33,24 @@ fi
 
 # vim
 echo "Setting up vim...\n"
-lnif $dotfiles/.vimrc ~/.vimrc
-lnif $dotfiles/.vim_runtime ~/.vim_runtime
+lnif $DOTFILES/.vimrc $HOME/.vimrc
+lnif $DOTFILES/.vim_runtime $HOME/.vim_runtime
+sudo ln -s $HOME/.vimrc /var/root/.vimrc
+sudo ln -s $HOME/.vim_runtime /var/root/.vim_runtime
 
 # tmux
 echo "Setting up tmux...\n"
-lnif $dotfiles/.tmux.conf ~/.tmux.conf
+lnif $DOTFILES/.tmux.conf $HOME/.tmux.conf
 
 # zsh
-# echo "Setting up zsh...\n"
+echo "Setting up zsh...\n"
+sudo -u $CURRENT_USER brew install zsh
 
+# oh-my-zsh
+echo "Setting up oh-my-zsh"
+chsh -s /bin/zsh
+sudo chsh -s /bin/zsh
+lnif $DOTFILES/.oh-my-zsh $HOME/.oh-my-zsh
+lnif $DOTFILES/.zshrc $HOME/.zshrc
+sudo ln -s $HOME/.oh-my-zsh /var/root/.oh-my-zsh
+sudo ln -s $HOME/.zshrc /var/root/.zshrc
