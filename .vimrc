@@ -13,8 +13,8 @@ endtry
 
 " Colorscheme
 set background=dark
-" colorscheme peaksea
-colorscheme solarized
+colorscheme peaksea
+" colorscheme solarized
 
 "Set Number
 set relativenumber
