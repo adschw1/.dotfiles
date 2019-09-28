@@ -1,4 +1,5 @@
 alias zshconf="vim ~/.zshrc"
+alias python=/usr/local/bin/python3.7
 alias reload="source ~/.zshrc"
 alias ll="ls -lhaG"
 alias l="ls -lhsG"
