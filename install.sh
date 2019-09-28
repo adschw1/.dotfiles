@@ -16,9 +16,11 @@ fi
 # homebrew TODO: make these optional...
 echo "\nsetting up homebrew...\n"
 if [[ `brew --help` ]]; then
-  echo "brew already installed...\n"
+  echo "\nbrew already installed...\n"
+  sudo -u $CURRENT_USER brew doctor
+  sudo -u $CURRENT_USER brew cleanup
 else
-  echo "installing brew...\n"
+  echo "\ninstalling brew...\n"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   sudo -u $CURRENT_USER brew update
 fi
@@ -28,7 +30,7 @@ while true; do
     read -p "(y/n)" yn
     case $yn in
         [Yy]* )     
-            echo "installing useful tools...\n"
+            echo "\ninstalling useful tools...\n"
             sudo -u $CURRENT_USER brew install tree
             sudo -u $CURRENT_USER brew tap drone/drone
             sudo -u $CURRENT_USER brew install drone
