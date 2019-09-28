@@ -41,7 +41,8 @@ else
 fi
 
 while true; do
-    read -p "would you like to install useful tools? " yn
+    echo "\nwould you like to install the following tools?\n • tree\n • drone\n • terraform\n • chrome\n • firefox\n • lastpass\n • flowdock\n • sublime\n • intellij\n • vscode\n • keepass\n • docker \n • jdk8\n • maven\n • gradle"
+    read -p "(y/n)" yn
     case $yn in
         [Yy]* )     
             echo "installing useful tools...\n"
