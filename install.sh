@@ -25,6 +25,23 @@ else
   sudo -u $CURRENT_USER brew update
 fi
 
+echo "\nchecking for git...\n"
+if [[ `git --help` ]]; then
+  echo "\ngit is installed...\n"
+else
+  echo "\ninstalling git...\n"
+  sudo -u $CURRENT_USER brew install git
+fi
+
+echo "installing/updating dotfiles...\n"
+if [ ! -e $DOTFILES/.git ]; then
+    echo "cloning dotfiles\n"
+    git clone https://github.com/adschw1/.dotfiles.git
+else
+    echo "updating dotfiles\n"
+    cd $DOTFILES && git pull
+fi
+
 while true; do
     echo "\nwould you like to install the following tools?\n • tree\n • drone\n • terraform\n • chrome\n • firefox\n • lastpass\n • flowdock\n • sublime\n • intellij\n • vscode\n • keepass\n • docker \n • jdk8\n • maven\n • gradle"
     read -p "(y/n)" yn
@@ -77,6 +94,7 @@ sudo -u root ln -sfnv $DOTFILES/.tmux.conf /var/root/.tmux.conf
 # zsh
 echo "\nsetting up zsh...\n"
 sudo -u $CURRENT_USER brew install zsh
+sudo -u $CURRENT_USER brew install thefuck
 sudo -u $CURRENT_USER chsh -s /bin/zsh
 sudo -u root chsh -s /bin/zsh
 
