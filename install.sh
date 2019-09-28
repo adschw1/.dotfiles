@@ -26,10 +26,10 @@ fi
 echo "installing/updating dotfiles...\n"
 if [ ! -e $DOTFILES/.git ]; then
     echo "cloning dotfiles\n"
-    git clone https://github.com/adschw1/.dotfiles.git
+    git clone git@github.com:adschw1/.dotfiles.git
 else
     echo "updating dotfiles\n"
-    cd $DOTFILES && git pull
+    cd $DOTFILES && git pull origin master
 fi
 
 while true; do
