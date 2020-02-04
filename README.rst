@@ -1,6 +1,6 @@
-Dotfiles [daht·fahyl·uhs]
+Dotfiles
 =========================
-noun ~ `More Saving. More doing. That's the power of Dotfiles.`
+`More Saving. More doing. That's the power of Dotfiles.`
 ---------------------------------------------------------------
 
 I think I'm finally gonna make these work... maybe
